@@ -1,38 +1,45 @@
-'use strict';
-
-/**
- * @return {object}
- */
-function makeCounter() {
-  let count = 0; // замкнутая переменная инкапсулирована
-
-  return {
-    increment() {
-      return ++count;
-    },
-    decrement() {
-      return --count;
-    },
-  };
+class Student {
+  /**
+   *
+   * @param {string} name
+   * @param {boolean} isMale
+   * @param {Univer} univer
+   */
+  constructor(name, isMale, univer) {
+    this.name = name;
+    this.isMale = isMale;
+    this.univer = univer;
+    this.contacts = {
+      email: 'test@testovich.com',
+    };
+  }
 }
 
-const counter1 = makeCounter();
-const counter2 = makeCounter();
+class Univer {
+  constructor(name) {
+    this.name = name;
+  }
+}
 
-/* 
- Напишите функцию createAdder(n), 
- которая вернёт другую функцию.
+const znu = new Univer('znu');
 
- Возвращенная функция должна складывать
- Получаемый аргумент m с аргументом n возвращщаюей функции.
+const stud = new Student('Undefined Undefinedovich', true, znu);
 
-const adder = createAdder(10);
-adder(10) //20
-adder(50) //70
-adder(100) //170
+function getStudentInfo(student) {
+  debugger
+  const deepObjectEntries = (obj) => {
+    const info = [];
+    Object.entries(obj).forEach(([key, value], index) => {
+      if (typeof value === 'object') {
+        info.push(deepObjectEntries(value).flat());
+      } else {
+        info.push([key, value]);
+      }
+    });
+    return info;
+  };
 
-*/
-
-const createAdder = (n) => (m) => (n += m);
-
-const adder = createAdder(100);
+  return deepObjectEntries(student)
+    .map((item) => item.join(': '))
+    .join('\n');
+}
