@@ -63,5 +63,8 @@
 
 .cardName:empty::after,
 .initials:empty::after {
-  content: "Unknown";
+  content: 'Unknown';
+}
+li {
+  padding: 5px;
 }
