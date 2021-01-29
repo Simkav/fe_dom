@@ -86,16 +86,22 @@
   width: 35px;
   height: 35px;
   align-items: center;
+  color: gray;
 }
 .link {
+  color: inherit;
   width: 80%;
   height: 80%;
 }
 .ico {
   font-size: 25px;
-  color: black;
+  color: inherit;
 }
 .cardName:empty::after,
 .initials:empty::after {
   content: 'Unknown';
+}
+.link-container:hover {
+  background-color: red;
+  color: white;
 }
