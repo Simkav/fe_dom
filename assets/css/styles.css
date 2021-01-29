@@ -18,20 +18,20 @@
 .cardWrapper {
   display: flex;
   border: 4px solid;
-  margin: 2rem 1rem;
+  margin: 2rem 3rem;
 }
 
 .cardContainer {
   display: flex;
   flex-direction: column;
   text-align: center;
-  width: 320px;
+  width: 290px;
 }
 
 .cardImageWrapper {
   position: relative;
   width: inherit;
-  height: 320px;
+  height: 290px;
 }
 
 .initials {
@@ -59,9 +59,40 @@
 .cardName {
   margin: 1rem 0;
   font-weight: bold;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
-
+.cardDescription {
+  line-height: 1.2rem;
+  margin: 5px;
+  display: -webkit-box;
+  -webkit-line-clamp: 6;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+}
+.cardLinks {
+  display: flex;
+  justify-content: space-around;
+  margin: 10px;
+}
+.link-container {
+  display: flex;
+  justify-content: center;
+  border: 2px solid gray;
+  width: 35px;
+  height: 35px;
+  align-items: center;
+}
+.link {
+  width: 80%;
+  height: 80%;
+}
+.ico {
+  font-size: 25px;
+  color: black;
+}
 .cardName:empty::after,
 .initials:empty::after {
-  content: "Unknown";
+  content: 'Unknown';
 }
