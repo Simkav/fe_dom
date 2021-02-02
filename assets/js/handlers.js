@@ -2,7 +2,7 @@ function handleImageError({ target }) {
   target.remove();
 }
 
-function handleSelectCard({ currentTarget: li, target }) {
+function handleSelectCard({ currentTarget: li }) {
   li.classList.toggle('selectedCard');
 }
 
