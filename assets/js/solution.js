@@ -36,29 +36,4 @@ function createPersonCard(person) {
   );
 }
 
-function createContacts(contacts = []) {
-  return contacts
-    .map((userLink) => {
-      return createLink(userLink, iconClasses.get(new URL(userLink).hostname));
-    })
-    .filter(Boolean);
-}
-function createLink(hrefLink, iconClassList) {
-  const icon = createElement('i', { classNames: [...iconClassList] });
-  const a = createElement(
-    'a',
-    {
-      attr: new Map().set('href', hrefLink),
-      classNames: ['link'],
-    },
-    icon
-  );
-  const linkContainer = createElement(
-    'div',
-    {
-      classNames: ['link-container'],
-    },
-    a
-  );
-  return linkContainer;
-}
+
