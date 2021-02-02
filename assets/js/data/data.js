@@ -3,8 +3,7 @@
   FILE READONLY
 
 */
-const lorem =
-  'Lorem ipsum dolor sit amet consectetur, adipisicing elit.Quasisit in adipisci temporibus dolor fugiat incidunt omnis eligendinon ea.';
+
 const responseData = [
   {
     id: 1,
