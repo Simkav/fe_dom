@@ -1,7 +1,24 @@
 'use strict';
 const cardContainer = document.getElementById('root');
-const cards = responseData.map((person) => createPersonCard(person));
-cardContainer.append(...cards);
+fetch('./assets/js/data/users.json')
+  .then((response) => {
+    console.log('Recieve response');
+    return response.json();
+  })
+  .then((persons) => {
+    console.log('Response parsed');
+    renderCards(persons);
+  })
+  .catch(() => {
+    console.log('Some Error');
+  });
+function renderCards(persons) {
+  const cards = persons.map((person) => createPersonCard(person));
+  cardContainer.append(...cards);
+}
+//OLD WAY
+// const cards = responseData.map((person) => createPersonCard(person));
+// cardContainer.append(...cards);
 function createPersonCard(person) {
   const p = createElement(
     'p',
