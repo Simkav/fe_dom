@@ -1,4 +1,5 @@
 'use strict';
+//TODO ADD DATA ATTR TO LI WITH NAME OF OWNER AND COMPLETE TASK
 const cardContainer = document.getElementById('root');
 fetch('./assets/js/data/users.json')
   .then((response) => {
@@ -13,8 +14,7 @@ fetch('./assets/js/data/users.json')
     console.log('Some Error');
   });
 function renderCards(persons) {
-  const cards = persons.map((person) => createPersonCard(person));
-  cardContainer.append(...cards);
+  cardContainer.append(...persons.map((person) => createPersonCard(person)));
 }
 //OLD WAY
 // const cards = responseData.map((person) => createPersonCard(person));
@@ -46,9 +46,16 @@ function createPersonCard(person) {
     p,
     cardLinks
   );
-  return createElement(
+  const li = createElement(
     'li',
-    { classNames: ['cardWrapper'], onClick: handleSelectCard },
+    {
+      classNames: ['cardWrapper'],
+      onClick: handleSelectCard,
+      id: `person${person.id}`,
+    },
     article
   );
+  li.dataset.name =
+    `${person.firstName} ${person.lastName}`.trim() || 'Unknown';
+  return li;
 }

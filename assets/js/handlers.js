@@ -2,8 +2,9 @@ function handleImageError({ target }) {
   target.remove();
 }
 
-function handleSelectCard({ currentTarget: li }) {
+function handleSelectCard({ currentTarget: li, currentTarget: { id } }) {
   li.classList.toggle('selectedCard');
+  selectCard(li);
 }
 
 function handleImageLoad({
@@ -13,4 +14,8 @@ function handleImageLoad({
   },
 }) {
   document.getElementById(`wrapper${id}`).append(target);
+}
+function handleRemoveCardFromContainer({ target, target: { id } }) {
+  removeSelectionCard(id.slice(12));
+  target.remove();
 }
