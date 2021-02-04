@@ -21,8 +21,23 @@ function createImage({ firstName, profilePicture, id }, { className }) {
   img.classList.add(className);
   img.dataset.id = id;
   img.setAttribute('alt', firstName);
-  img.setAttribute('src', profilePicture);
-  img.addEventListener('error', handleImageError);
-  img.addEventListener('load', handleImageLoad);
+  loadImage(img, profilePicture)
+    .then((d) => {
+      handleImageLoad(d);
+    })
+    .catch((d) => {
+      handleImageError(d);
+    });
   return img;
+}
+function loadImage(img, src) {
+  img.setAttribute('src', src);
+  return new Promise((resolve, reject) => {
+    img.addEventListener('load', (response) => {
+      resolve(response);
+    });
+    img.addEventListener('error', (response) => {
+      reject(response);
+    });
+  });
 }
